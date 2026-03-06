@@ -238,11 +238,10 @@ nav {
 }
 
 .visit-site-button {
-    align-self: flex-end;
-    margin-top: 1rem;
-    padding: 0.4rem 0.9rem;
-    font-size: 0.85rem;
-    width: 50%;
+    margin-left: auto;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
 }
 
 /* Skills Section */
