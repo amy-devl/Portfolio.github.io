@@ -46,7 +46,7 @@ nav {
 
 .sdv-banner-image {
     width: 100%;
-    max-height: 130px;
+    max-height: 200px;
     object-fit: cover;
     display: block;
 }
