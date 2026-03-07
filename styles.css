@@ -583,9 +583,12 @@ button:hover {
 }
 
 .sdv-banner-footer {
-    width: 100%;
+    width: 100vw;
     max-height: 130px;
     object-fit: cover;
     display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
