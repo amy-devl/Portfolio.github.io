@@ -577,3 +577,15 @@ button:hover {
     text-decoration: none;
 }
 
+.footer {
+    background: transparent;
+    padding: 0;
+}
+
+.sdv-banner-footer {
+    width: 100%;
+    max-height: 130px;
+    object-fit: cover;
+    display: block;
+}
+
