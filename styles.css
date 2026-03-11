@@ -476,7 +476,7 @@ button:hover {
     transform: translateY(-50px);
 }
 
-.cv-section.visible, .project-card.visible, .skill-card.visible  {
+.cv-section.visible, .project-card.visible, .skill-card.visible, .sdv-hero-banner-image.visible {
     opacity: 1;
     transform: translateY(0);
 }
