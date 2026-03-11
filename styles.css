@@ -118,14 +118,18 @@ nav {
 }
 
 .sdv-hero-banner {
-    margin-top: 5rem;
+    position: absolute;
+    left: 50%;
+    bottom: 50px;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
+    z-index: 2;
+    width: min(700px, 90%);
 }
 
 .sdv-hero-banner-image {
-    max-width: 600px;
-    width: 80%;
+    width: 100%;
     border-radius: 10px;
     opacity: 0;
     transform: translateY(25px);
@@ -369,6 +373,10 @@ button:hover {
     }
     .hero-content p {
         font-size: 1.2rem;
+    }
+    .sdv-hero-banner {
+        bottom: 25px;
+        width: min(650px, 92%);
     }
 }
 
