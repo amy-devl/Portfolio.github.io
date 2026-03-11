@@ -117,6 +117,24 @@ nav {
     opacity: 0;
 }
 
+.about-summary {
+    max-width: 900px;
+    margin: 0 auto 2.5rem auto;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #f5f6fa 0%, #ffffff 60%, #eef5ff 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border-left: 4px solid var(--secondary-color);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.about-summary .accent {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
 .sdv-hero-banner {
     position: absolute;
     left: 50%;
@@ -463,7 +481,7 @@ button:hover {
 }
 
 /* Animation Styles */
-.cv-section, .project-card, .skill-card, .sdv-hero-banner-image {
+.about-summary, .cv-section, .project-card, .skill-card, .sdv-hero-banner-image {
     opacity: 0;
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
@@ -476,7 +494,7 @@ button:hover {
     transform: translateY(-50px);
 }
 
-.cv-section.visible, .project-card.visible, .skill-card.visible, .sdv-hero-banner-image.visible {
+.about-summary.visible, .cv-section.visible, .project-card.visible, .skill-card.visible, .sdv-hero-banner-image.visible {
     opacity: 1;
     transform: translateY(0);
 }
