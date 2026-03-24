@@ -133,7 +133,7 @@
     <section id="veille" class="cv-section">
         <h2 class="section-title">Veille informationnelle</h2>
         <div class="section-content">
-            <p>
+            <p class="veille-intro">
                 Retrouvez ci-dessous mon sujet de veille informationnelle, ainsi que les liens menant au ressources liées à la veille.
             </p>
             <div class="veille-links" style="margin-top: 1.5em;">
@@ -197,6 +197,19 @@
                     </li>
                 </ul>
                 <style>
+                    .veille-intro {
+                        font-size: 1.13rem;
+                        color: #276491;
+                        background: linear-gradient(90deg, #ecf6fb 70%, #d8e9f7 100%);
+                        padding: 0.9em 1.2em;
+                        margin-bottom: 1.7em;
+                        border-left: 5px solid #4a90a4;
+                        border-radius: 0 10px 10px 0;
+                        font-style: italic;
+                        font-weight: 500;
+                        box-shadow: 0 2px 10px rgba(76, 155, 230, 0.06);
+                        letter-spacing: 0.03em;
+                    }
                     .modern-resource-list {
                         list-style: none;
                         padding: 0;
@@ -267,6 +280,10 @@
                         .resource-badge {
                             margin-left: 0;
                             margin-top: 0.5em;
+                        }
+                        .veille-intro {
+                            font-size: 1rem;
+                            padding: 0.8em 1em;
                         }
                     }
                 </style>
