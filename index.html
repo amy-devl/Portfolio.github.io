@@ -290,24 +290,6 @@
             </div>
         </div>
     </section>
-    <script>
-        // Correction : gestion de l'ouverture des bons carousels selon la mission
-
-        function openCarousel(mission) {
-            // Fermer tous les carousels avant d'en ouvrir un (sécurité)
-            const modals = document.querySelectorAll('.carousel-modal');
-            modals.forEach(modal => modal.classList.remove('open'));
-            document.body.style.overflow = '';
-
-            if (mission === "mission2") {
-                document.getElementById("carousel-modal").classList.add("open");
-                document.body.style.overflow = 'hidden';
-            } else if (mission === "mission3") {
-                document.getElementById("carousel-modal-mission3").classList.add("open");
-                document.body.style.overflow = 'hidden';
-            }
-        }
-    </script>
 
     <!-- Projects Section -->
     <section id="projets" class="projects">
@@ -648,6 +630,62 @@
             }
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
+        // ===== CAROUSEL MISSION 3 =====
+let currentSlide3 = 0;
+
+function openCarousel3() {
+    currentSlide3 = 0;
+    const modal = document.getElementById('carousel-modal-mission3');
+    modal.classList.add('open');
+    updateCarousel3();
+    buildDots3();
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCarousel3() {
+    document.getElementById('carousel-modal-mission3').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function closeCarouselOnBg3(e) {
+    if (e.target === document.getElementById('carousel-modal-mission3')) closeCarousel3();
+}
+
+function getSlides3() {
+    return document.querySelectorAll('#carousel-track-mission3 .carousel-slide');
+}
+
+function updateCarousel3() {
+    getSlides3().forEach((s, i) => s.classList.toggle('active', i === currentSlide3));
+    document.querySelectorAll('#carousel-dots-mission3 .carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide3));
+}
+
+function moveCarousel3(dir) {
+    const slides = getSlides3();
+    currentSlide3 = (currentSlide3 + dir + slides.length) % slides.length;
+    updateCarousel3();
+}
+
+function buildDots3() {
+    const slides = getSlides3();
+    const dotsEl = document.getElementById('carousel-dots-mission3');
+    dotsEl.innerHTML = '';
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => { currentSlide3 = i; updateCarousel3(); };
+        dotsEl.appendChild(dot);
+    });
+}
+
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('carousel-modal-mission3').classList.contains('open')) return;
+    if (e.key === 'ArrowRight') moveCarousel3(1);
+    if (e.key === 'ArrowLeft')  moveCarousel3(-1);
+    if (e.key === 'Escape')     closeCarousel3();
+});
+    
+
 
         // ===== CAROUSEL MODAL =====
 const carouselData = {
@@ -708,60 +746,7 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft')  moveCarousel(-1);
     if (e.key === 'Escape')     closeCarousel();
 });
-// ===== CAROUSEL MISSION 3 =====
-let currentSlide3 = 0;
 
-function openCarousel3() {
-    currentSlide3 = 0;
-    const modal = document.getElementById('carousel-modal-mission3');
-    modal.classList.add('open');
-    updateCarousel3();
-    buildDots3();
-    document.body.style.overflow = 'hidden';
-}
-
-function closeCarousel3() {
-    document.getElementById('carousel-modal-mission3').classList.remove('open');
-    document.body.style.overflow = '';
-}
-
-function closeCarouselOnBg3(e) {
-    if (e.target === document.getElementById('carousel-modal-mission3')) closeCarousel3();
-}
-
-function getSlides3() {
-    return document.querySelectorAll('#carousel-track-mission3 .carousel-slide');
-}
-
-function updateCarousel3() {
-    getSlides3().forEach((s, i) => s.classList.toggle('active', i === currentSlide3));
-    document.querySelectorAll('#carousel-dots-mission3 .carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide3));
-}
-
-function moveCarousel3(dir) {
-    const slides = getSlides3();
-    currentSlide3 = (currentSlide3 + dir + slides.length) % slides.length;
-    updateCarousel3();
-}
-
-function buildDots3() {
-    const slides = getSlides3();
-    const dotsEl = document.getElementById('carousel-dots-mission3');
-    dotsEl.innerHTML = '';
-    slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => { currentSlide3 = i; updateCarousel3(); };
-        dotsEl.appendChild(dot);
-    });
-}
-
-document.addEventListener('keydown', e => {
-    if (!document.getElementById('carousel-modal-mission3').classList.contains('open')) return;
-    if (e.key === 'ArrowRight') moveCarousel3(1);
-    if (e.key === 'ArrowLeft')  moveCarousel3(-1);
-    if (e.key === 'Escape')     closeCarousel3();
-});
 
 </script>
 </body>
