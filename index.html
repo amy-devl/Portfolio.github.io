@@ -290,6 +290,24 @@
             </div>
         </div>
     </section>
+    <script>
+        // Correction : gestion de l'ouverture des bons carousels selon la mission
+
+        function openCarousel(mission) {
+            // Fermer tous les carousels avant d'en ouvrir un (sécurité)
+            const modals = document.querySelectorAll('.carousel-modal');
+            modals.forEach(modal => modal.classList.remove('open'));
+            document.body.style.overflow = '';
+
+            if (mission === "mission2") {
+                document.getElementById("carousel-modal").classList.add("open");
+                document.body.style.overflow = 'hidden';
+            } else if (mission === "mission3") {
+                document.getElementById("carousel-modal-mission3").classList.add("open");
+                document.body.style.overflow = 'hidden';
+            }
+        }
+    </script>
 
     <!-- Projects Section -->
     <section id="projets" class="projects">
