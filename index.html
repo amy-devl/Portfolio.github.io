@@ -357,55 +357,87 @@
             </div>
         </div>
     </section>
-    <section id="modern-feature" style="background: linear-gradient(135deg, #f5f7fa, #cfdef3); padding: 3rem 0 2.5rem 0; margin: 2rem 0 0 0;">
-        <div style="max-width: 1250px; margin: 0 auto; padding: 0 2rem;">
-            <h2 class="section-title" style="text-align: center; font-size: 2.6rem; letter-spacing: .04em; color: #273c75; margin-bottom: 1.8rem;">Nouveautés Modernes</h2>
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
-                <div class="mod-card" style="flex: 1 1 260px; min-width: 260px; max-width: 350px; background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(40, 64, 122, 0.10); padding: 2.2rem 1.3rem; margin: .7rem; display: flex; flex-direction: column; align-items: center; transition: transform .2s;">
-                    <div style="width:64px; height:64px; display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#a18cd1 0%,#fbc2eb 100%); border-radius:16px; margin-bottom:1.2rem;">
-                        <i class="fas fa-chart-line" style="color:#273c75; font-size: 2.1em;"></i>
-                    </div>
-                    <h3 style="color: #273c75; margin-bottom: .6rem;">Suivi interactif</h3>
-                    <p style="color: #444; font-size: 1.09rem; text-align: center;">Des modules digitaux pour visualiser la progression des projets et interagir en temps réel.</p>
-                </div>
-                <div class="mod-card" style="flex: 1 1 260px; min-width: 260px; max-width: 350px; background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(40, 64, 122, .10); padding: 2.2rem 1.3rem; margin: .7rem; display: flex; flex-direction: column; align-items: center; transition: transform .2s;">
-                    <div style="width:64px; height:64px; display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e0c3fc 0%,#8ec5fc 100%); border-radius:16px; margin-bottom:1.2rem;">
-                        <i class="fas fa-mobile-alt" style="color:#273c75; font-size:2.1em;"></i>
-                    </div>
-                    <h3 style="color: #273c75; margin-bottom: .6rem;">Responsive Design</h3>
-                    <p style="color: #444; font-size: 1.09rem; text-align: center;">Ergonomie optimale&nbsp;: affichage élégant sur tous vos appareils, du mobile à l’écran large.</p>
-                </div>
-                <div class="mod-card" style="flex: 1 1 260px; min-width: 260px; max-width: 350px; background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(40, 64, 122, .10); padding: 2.2rem 1.3rem; margin: .7rem; display: flex; flex-direction: column; align-items: center; transition: transform .2s;">
-                    <div style="width:64px; height:64px; display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fceabb 0%,#f8b500 100%); border-radius:16px; margin-bottom:1.2rem;">
-                        <i class="fas fa-lock" style="color:#273c75; font-size:2.1em;"></i>
-                    </div>
-                    <h3 style="color: #273c75; margin-bottom: .6rem;">Sécurité améliorée</h3>
-                    <p style="color: #444; font-size: 1.09rem; text-align: center;">Des pratiques à jour : protection des données et fiabilité des accès pour tous les utilisateurs.</p>
-                </div>
-            </div>
-        </div>
-        <style>
-            @media (max-width: 980px) {
-                #modern-feature .mod-card {
-                    max-width: 100% !important;
-                    min-width: 220px !important;
-                    margin: 1.2rem .5rem;
-                }
-                #modern-feature > div {
-                    flex-direction: column !important;
-                }
+    <style>
+        /* Autres ressources: Style pour harmonisation avec les projets et le site */
+        .autres-ressources {
+            background: #f7f7f7;
+            padding: 40px 0 60px 0;
+        }
+        .autres-ressources .section-title {
+            font-size: 2.3rem;
+            color: #2b2d42;
+            text-align: center;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: .02em;
+        }
+        .ressources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            justify-content: center;
+            padding: 0 1.2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .ressource-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(22, 22, 32, 0.09), 0 1.5px 4px rgba(110, 110, 130, 0.05);
+            padding: 1.3rem 1.2rem 1rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            min-height: 370px;
+        }
+        .ressource-card:hover {
+            transform: translateY(-6px) scale(1.025);
+            box-shadow: 0 8px 22px rgba(40, 46, 66, 0.13), 0 2.5px 7px rgba(99, 98, 160, 0.10);
+        }
+        .ressource-image {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            background: #f2f2f7;
+            border-radius: 12px;
+            margin-bottom: 1.1rem;
+            border: 1.5px solid #ebe7f3;
+            box-shadow: 0 1.5px 5px rgba(0,0,0,0.03);
+        }
+        .ressource-info {
+            text-align: center;
+        }
+        .ressource-info h3 {
+            color: #34547a;
+            font-size: 1.20rem;
+            font-weight: 600;
+            letter-spacing: .01em;
+            margin-bottom: .7rem;
+        }
+        .ressource-info p {
+            color: #555970;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* Responsive, pour plus petit écrans */
+        @media (max-width: 700px) {
+            .ressources-grid {
+                grid-template-columns: 1fr;
+                gap: 1.1rem;
             }
-            #modern-feature .mod-card:hover {
-                transform: translateY(-6px) scale(1.025);
-                box-shadow: 0 14px 38px rgba(30, 42, 80, 0.13);
+            .ressource-card {
+                min-height: unset;
+                padding: 1.1rem 0.7rem 0.8rem 0.7rem;
             }
-            #modern-feature i.fas {
-                transition: color 0.2s;
+            .autres-ressources {
+                padding: 20px 0 32px 0;
             }
-        </style>
-        <!-- FontAwesome pour les icônes si pas déjà inclus -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    </section>
+        }
+    </style>
 
     <section id="autres-ressources" class="autres-ressources">
         <h2 class="section-title">Autres ressources</h2>
