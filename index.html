@@ -890,6 +890,89 @@
         </form>
     </section>
 <!-- INSERT_YOUR_CODE -->
+<script>
+// --- Correction du carousel cybersécurité : navigation et affichage corrects --- //
+(function() {
+
+    // Récupère le conteneur/carousel Cyber depuis le DOM
+    const modalCyber = document.getElementById('carousel-modal-cyber');
+    const trackCyber = document.getElementById('carousel-track-cyber');
+    const slidesCyber = trackCyber ? trackCyber.querySelectorAll('.carousel-slide') : [];
+    let currentCyberIndex = 0;
+
+    function showCyberSlide(idx) {
+        // Sécurité : bornes
+        if (idx < 0) idx = slidesCyber.length - 1;
+        if (idx >= slidesCyber.length) idx = 0;
+        // Cache tout
+        slidesCyber.forEach((slide, i) => {
+            slide.classList.toggle('active', i === idx);
+            // Optionnel : aria
+            slide.setAttribute('aria-hidden', i !== idx);
+        });
+        currentCyberIndex = idx;
+    }
+
+    window.moveCarouselCyber = function(direction) {
+        if (!slidesCyber.length) return;
+        let newIndex = currentCyberIndex + direction;
+        if (newIndex < 0) newIndex = slidesCyber.length - 1;
+        if (newIndex >= slidesCyber.length) newIndex = 0;
+        showCyberSlide(newIndex);
+    };
+
+    window.closeCarouselCyber = function() {
+        modalCyber.style.display = "none";
+        document.body.style.overflow = "";
+    };
+
+    window.closeCarouselOnBgCyber = function(e) {
+        if (e.target === modalCyber) {
+            window.closeCarouselCyber();
+        }
+    };
+
+    // Affiche le carousel modal et commence au premier slide
+    window.openCarouselCyber = function() {
+        modalCyber.style.display = "block";
+        document.body.style.overflow = "hidden";
+        showCyberSlide(0);
+    };
+
+    // Détecte l'ouverture via autre code (optionnel, par exemple bouton dédié)
+    // document.querySelector('#votre-bouton-open-cyber')?.addEventListener('click', () => {
+        // window.openCarouselCyber();
+    // });
+
+    // Initialiser (cache tout sauf le premier au départ)
+    if (slidesCyber.length) {
+        showCyberSlide(0);
+    }
+
+    // Touches clavier (gauche/droite et échap)
+    document.addEventListener('keydown', function(event) {
+        if (modalCyber.style.display === "block") {
+            if (event.key === "ArrowLeft") {
+                window.moveCarouselCyber(-1);
+            } else if (event.key === "ArrowRight") {
+                window.moveCarouselCyber(1);
+            } else if (event.key === "Escape") {
+                window.closeCarouselCyber();
+            }
+        }
+    });
+})();
+</script>
+<style>
+/* Corrige l'affichage (une seule slide visible) */
+.carousel-slide {
+    display: none;
+}
+.carousel-slide.active {
+    display: block;
+}
+</style>
+
 <!-- Modal Carousel Cybersécurité -->
 <div id="carousel-modal-cyber" class="carousel-modal" onclick="closeCarouselOnBgCyber(event)">
     <div class="carousel-container">
