@@ -515,6 +515,121 @@
         to   { opacity: 1; transform: scale(1);}
     }
     </style>
+    <!-- INSERT_YOUR_CODE -->
+    <style>
+    /* Carousel styles for the modal */
+    .carousel-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .carousel-images {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .carousel-arrow {
+        background: none;
+        border: none;
+        color: #222;
+        font-size: 2.1rem;
+        cursor: pointer;
+        padding: 0 14px;
+        user-select: none;
+    }
+    .carousel-arrow:focus {
+        outline: 2px solid #2959b8;
+    }
+    .carousel-index {
+        margin-top: 10px;
+        font-size: 0.97em;
+        color: #444;
+    }
+    </style>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Carousel image sources and alts for Certif Cybersécurité
+        const cyberCarouselImages = [
+            {
+                src: 'captures/certification-cybersecurite-1.png',
+                alt: 'Certification Cybersécurité - Capture 1'
+            },
+            {
+                src: 'captures/certification-cybersecurite-2.png',
+                alt: 'Certification Cybersécurité - Capture 2'
+            },
+            {
+                src: 'captures/certification-cybersecurite-3.png',
+                alt: 'Certification Cybersécurité - Capture 3'
+            }
+            // Ajoute d'autres captures ici si besoin
+        ];
+
+        const modal = document.getElementById('image-modal');
+        // Si le modal existe déjà, on modifie son contenu sinon on laisse le handler classique
+        const ressourceCards = document.querySelectorAll('.ressource-card');
+        ressourceCards.forEach(function(card, idx){
+            const imgInCard = card.querySelector('img');
+            if(imgInCard && imgInCard.alt === 'Certification Cybersécurité') {
+                card.addEventListener('click', function(){
+                    // Si le modal-content contient déjà un carousel, le reset
+                    const modalContent = modal.querySelector('.modal-content');
+                    modalContent.innerHTML = `
+                        <button class="modal-close" style="position:absolute;top:10px;right:16px;font-size:1.8rem;background:transparent;border:none;cursor:pointer;z-index:2;">&times;</button>
+                        <div class="carousel-container">
+                            <div class="carousel-images">
+                                <button class="carousel-arrow" id="carousel-prev" aria-label="Image précédente">&#8592;</button>
+                                <img id="carousel-image" src="" alt="" style="max-width:80vw;max-height:60vh;border-radius:8px;box-shadow:0 2px 13px rgba(50,50,90,0.13);">
+                                <button class="carousel-arrow" id="carousel-next" aria-label="Image suivante">&#8594;</button>
+                            </div>
+                            <div class="carousel-index" id="carousel-index"></div>
+                        </div>
+                    `;
+
+                    // Mount events and logic
+                    let idx = 0;
+                    const imgElem = modalContent.querySelector('#carousel-image');
+                    const idxElem = modalContent.querySelector('#carousel-index');
+                    const prevBtn = modalContent.querySelector('#carousel-prev');
+                    const nextBtn = modalContent.querySelector('#carousel-next');
+
+                    function render() {
+                        imgElem.src = cyberCarouselImages[idx].src;
+                        imgElem.alt = cyberCarouselImages[idx].alt;
+                        idxElem.textContent = (idx + 1) + ' / ' + cyberCarouselImages.length;
+                        prevBtn.disabled = (idx === 0);
+                        nextBtn.disabled = (idx === cyberCarouselImages.length-1);
+                    }
+                    prevBtn.addEventListener('click', function(e){
+                        if(idx > 0) { idx--; render(); }
+                    });
+                    nextBtn.addEventListener('click', function(e){
+                        if(idx < cyberCarouselImages.length-1) { idx++; render(); }
+                    });
+
+                    // keyboard navigation
+                    modalContent.addEventListener('keydown', function(e){
+                        if(e.key === 'ArrowLeft' && idx > 0) {
+                            idx--; render();
+                        }
+                        else if(e.key === 'ArrowRight' && idx < cyberCarouselImages.length-1) {
+                            idx++; render();
+                        }
+                    });
+                    // Close modal button
+                    modalContent.querySelector('.modal-close').addEventListener('click', function(){
+                        modal.style.display = 'none';
+                    });
+
+                    render();
+                    modal.style.display = 'flex';
+                    // Accessibility: focus carousel for keyboard navigation
+                    prevBtn.focus();
+                });
+            }
+        });
+    });
+    </script>
 
     <section id="autres-ressources" class="autres-ressources">
         <h2 class="section-title">Autres ressources</h2>
