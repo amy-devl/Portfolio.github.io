@@ -546,6 +546,64 @@
         color: #444;
     }
     </style>
+    <style>
+    /* Carousel modal fix: ensure carousel elements are visible and sized for captures */
+    #image-modal .carousel-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0.5rem;
+    }
+    #image-modal .carousel-images {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    #image-modal .carousel-arrow {
+        background: none;
+        border: none;
+        color: #222;
+        font-size: 2.1rem;
+        cursor: pointer;
+        padding: 0 16px;
+        user-select: none;
+    }
+    #image-modal .carousel-arrow:focus {
+        outline: 2px solid #2959b8;
+    }
+    #image-modal .carousel-index {
+        margin-top: 10px;
+        font-size: 1em;
+        color: #444;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-align: center;
+    }
+    #image-modal img.carousel-img {
+        max-width: 70vw;
+        max-height: 62vh;
+        box-shadow: 0 2px 13px rgba(50,50,90,0.13);
+        border-radius: 8px;
+        border: 1px solid #ececec;
+        background: white;
+    }
+    /* Responsive improvements for small screens */
+    @media (max-width: 600px) {
+        #image-modal img.carousel-img {
+            max-width: 90vw;
+            max-height: 60vw;
+        }
+        #image-modal .carousel-arrow {
+            font-size: 1.6rem;
+            padding: 0 7px;
+        }
+        #image-modal .carousel-index {
+            font-size: 0.92em;
+        }
+    }
+    </style>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Carousel image sources and alts for Certif Cybersécurité
