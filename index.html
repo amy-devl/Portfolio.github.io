@@ -438,6 +438,83 @@
             }
         }
     </style>
+    <script>
+    // Fonctionnalité : au clic sur une carte, affiche l'image en grand (popup)
+    document.addEventListener('DOMContentLoaded', function() {
+        // Sélectionner toutes les cartes
+        const cards = document.querySelectorAll('.ressource-card');
+        cards.forEach(card => {
+            card.style.cursor = 'pointer'; // Optionnel: effet visuel pour le clic
+            card.addEventListener('click', function() {
+                const img = card.querySelector('.ressource-image');
+                if (!img) return;
+                // Crée modale si inexistante
+                let modal = document.getElementById('image-modal');
+                if (!modal) {
+                    modal = document.createElement('div');
+                    modal.id = 'image-modal';
+                    modal.innerHTML = `
+                        <div class="modal-backdrop"></div>
+                        <div class="modal-content">
+                            <img src="" alt="Capture d'écran agrandie" id="modal-image" />
+                        </div>
+                    `;
+                    document.body.appendChild(modal);
+
+                    // Fermer modale au clic en-dehors de l'image
+                    modal.querySelector('.modal-backdrop').addEventListener('click', function() {
+                        modal.style.display = 'none';
+                    });
+                }
+                // Met à jour l'image et affiche la modale
+                modal.querySelector('#modal-image').src = img.src;
+                modal.querySelector('#modal-image').alt = img.alt;
+                modal.style.display = 'flex';
+            });
+        });
+    });
+    </script>
+    <style>
+    /* Styles pour la modale d'affichage des images */
+    #image-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        inset: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    #image-modal .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(30,34,45, 0.68);
+        cursor: pointer;
+    }
+    #image-modal .modal-content {
+        position: relative;
+        z-index: 1;
+        background: white;
+        border-radius: 13px;
+        box-shadow: 0 6px 36px rgba(35,35,60,0.17);
+        padding: 16px 20px;
+        max-width: 95vw;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        animation: modal-in 0.18s cubic-bezier(.33,.6,.66,1) both;
+    }
+    #image-modal img#modal-image {
+        max-width: 80vw;
+        max-height: 75vh;
+        border-radius: 8px;
+        box-shadow: 0 2px 13px rgba(50,50,90,0.13);
+    }
+    @keyframes modal-in {
+        from { opacity: 0; transform: scale(0.92);}
+        to   { opacity: 1; transform: scale(1);}
+    }
+    </style>
 
     <section id="autres-ressources" class="autres-ressources">
         <h2 class="section-title">Autres ressources</h2>
