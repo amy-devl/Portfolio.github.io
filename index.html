@@ -357,6 +357,55 @@
             </div>
         </div>
     </section>
+    <section id="modern-feature" style="background: linear-gradient(135deg, #f5f7fa, #cfdef3); padding: 3rem 0 2.5rem 0; margin: 2rem 0 0 0;">
+        <div style="max-width: 1250px; margin: 0 auto; padding: 0 2rem;">
+            <h2 class="section-title" style="text-align: center; font-size: 2.6rem; letter-spacing: .04em; color: #273c75; margin-bottom: 1.8rem;">Nouveautés Modernes</h2>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+                <div class="mod-card" style="flex: 1 1 260px; min-width: 260px; max-width: 350px; background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(40, 64, 122, 0.10); padding: 2.2rem 1.3rem; margin: .7rem; display: flex; flex-direction: column; align-items: center; transition: transform .2s;">
+                    <div style="width:64px; height:64px; display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#a18cd1 0%,#fbc2eb 100%); border-radius:16px; margin-bottom:1.2rem;">
+                        <i class="fas fa-chart-line" style="color:#273c75; font-size: 2.1em;"></i>
+                    </div>
+                    <h3 style="color: #273c75; margin-bottom: .6rem;">Suivi interactif</h3>
+                    <p style="color: #444; font-size: 1.09rem; text-align: center;">Des modules digitaux pour visualiser la progression des projets et interagir en temps réel.</p>
+                </div>
+                <div class="mod-card" style="flex: 1 1 260px; min-width: 260px; max-width: 350px; background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(40, 64, 122, .10); padding: 2.2rem 1.3rem; margin: .7rem; display: flex; flex-direction: column; align-items: center; transition: transform .2s;">
+                    <div style="width:64px; height:64px; display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e0c3fc 0%,#8ec5fc 100%); border-radius:16px; margin-bottom:1.2rem;">
+                        <i class="fas fa-mobile-alt" style="color:#273c75; font-size:2.1em;"></i>
+                    </div>
+                    <h3 style="color: #273c75; margin-bottom: .6rem;">Responsive Design</h3>
+                    <p style="color: #444; font-size: 1.09rem; text-align: center;">Ergonomie optimale&nbsp;: affichage élégant sur tous vos appareils, du mobile à l’écran large.</p>
+                </div>
+                <div class="mod-card" style="flex: 1 1 260px; min-width: 260px; max-width: 350px; background: #fff; border-radius: 22px; box-shadow: 0 8px 32px rgba(40, 64, 122, .10); padding: 2.2rem 1.3rem; margin: .7rem; display: flex; flex-direction: column; align-items: center; transition: transform .2s;">
+                    <div style="width:64px; height:64px; display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fceabb 0%,#f8b500 100%); border-radius:16px; margin-bottom:1.2rem;">
+                        <i class="fas fa-lock" style="color:#273c75; font-size:2.1em;"></i>
+                    </div>
+                    <h3 style="color: #273c75; margin-bottom: .6rem;">Sécurité améliorée</h3>
+                    <p style="color: #444; font-size: 1.09rem; text-align: center;">Des pratiques à jour : protection des données et fiabilité des accès pour tous les utilisateurs.</p>
+                </div>
+            </div>
+        </div>
+        <style>
+            @media (max-width: 980px) {
+                #modern-feature .mod-card {
+                    max-width: 100% !important;
+                    min-width: 220px !important;
+                    margin: 1.2rem .5rem;
+                }
+                #modern-feature > div {
+                    flex-direction: column !important;
+                }
+            }
+            #modern-feature .mod-card:hover {
+                transform: translateY(-6px) scale(1.025);
+                box-shadow: 0 14px 38px rgba(30, 42, 80, 0.13);
+            }
+            #modern-feature i.fas {
+                transition: color 0.2s;
+            }
+        </style>
+        <!-- FontAwesome pour les icônes si pas déjà inclus -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    </section>
 
     <section id="autres-ressources" class="autres-ressources">
         <h2 class="section-title">Autres ressources</h2>
