@@ -972,6 +972,234 @@
     display: block;
 }
 </style>
+<!-- INSERT_YOUR_CODE -->
+
+<!-- Modal Carousel Autres Ressources -->
+<div id="carousel-modal-ressources" class="carousel-modal" style="display:none;" onclick="closeCarouselOnBgRessources(event)">
+    <div class="carousel-container">
+        <button class="carousel-close" onclick="closeCarouselRessources()">×</button>
+        <h2 class="carousel-title">Exemples de ressources et supports créés</h2>
+        <div class="carousel-track-wrapper">
+            <button class="carousel-arrow carousel-arrow--left" onclick="moveCarouselRessources(-1)">&#8592;</button>
+            <div class="carousel-track" id="carousel-track-ressources">
+                <div class="carousel-slide active">
+                    <img src="captures/ressource-capture-1.png" alt="Ressource pédagogique 1" class="carousel-img" />
+                    <p class="carousel-caption">Fiche guide — Sécuriser son mot de passe (Atelier adultes)</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="captures/ressource-capture-2.png" alt="Ressource pédagogique 2" class="carousel-img" />
+                    <p class="carousel-caption">Infographie personnalisée sur les usages numériques</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="captures/ressource-capture-3.png" alt="Ressource pédagogique 3" class="carousel-img" />
+                    <p class="carousel-caption">Extrait d'un tutoriel interactif — Découverte d'Excel</p>
+                </div>
+                <div class="carousel-slide">
+                    <img src="captures/ressource-capture-4.png" alt="Ressource pédagogique 4" class="carousel-img" />
+                    <p class="carousel-caption">Diaporama animé — Sensibilisation RGPD</p>
+                </div>
+                <!-- Ajoute d'autres slides selon tes supports -->
+            </div>
+            <button class="carousel-arrow carousel-arrow--right" onclick="moveCarouselRessources(1)">&#8594;</button>
+        </div>
+        <div class="carousel-index" id="carousel-index-ressources"></div>
+    </div>
+</div>
+
+<style>
+/* Styles personnalisés pour le carousel Autres ressources */
+#carousel-modal-ressources.carousel-modal {
+    position: fixed;
+    z-index: 101; /* au-dessus du contenu normal */
+    left: 0; top: 0; right: 0; bottom: 0;
+    background: rgba(20, 24, 38, 0.73);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#carousel-modal-ressources .carousel-container {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 6px 36px rgba(35,35,60,0.19);
+    padding: 17px 20px 20px 20px;
+    max-width: 97vw;
+    max-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modal-in 0.22s cubic-bezier(.33,.6,.66,1) both;
+}
+#carousel-modal-ressources .carousel-track-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+#carousel-modal-ressources .carousel-arrow {
+    background: none;
+    border: none;
+    color: #234;
+    font-size: 2.1rem;
+    cursor: pointer;
+    padding: 0 15px;
+    user-select: none;
+    transition: color .13s;
+}
+#carousel-modal-ressources .carousel-arrow:hover {
+    color: #1e5aad;
+}
+#carousel-modal-ressources .carousel-arrow:focus {
+    outline: 2px solid #2959b8;
+}
+#carousel-modal-ressources .carousel-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+}
+#carousel-modal-ressources .carousel-slide {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+#carousel-modal-ressources .carousel-slide.active {
+    display: flex;
+}
+#carousel-modal-ressources img.carousel-img {
+    max-width: 71vw;
+    max-height: 61vh;
+    border-radius: 8px;
+    box-shadow: 0 2px 13px rgba(50,50,90,0.13);
+    border: 1.1px solid #ececec;
+    background: white;
+}
+#carousel-modal-ressources .carousel-caption {
+    margin-top: 10px;
+    color: #444;
+    font-size: 1em;
+    text-align: center;
+}
+#carousel-modal-ressources .carousel-index {
+    margin-top: 12px;
+    font-size: 1em;
+    color: #465;
+    font-weight: 500;
+    text-align: center;
+}
+#carousel-modal-ressources .carousel-close {
+    position: absolute;
+    top: 13px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: #445;
+    cursor: pointer;
+}
+@media (max-width: 600px) {
+    #carousel-modal-ressources .carousel-track-wrapper {
+        flex-direction: row;
+        padding: 0;
+    }
+    #carousel-modal-ressources img.carousel-img {
+        max-width: 89vw;
+        max-height: 56vw;
+    }
+    #carousel-modal-ressources .carousel-arrow {
+        font-size: 1.55rem;
+        padding: 0 6px;
+    }
+    #carousel-modal-ressources .carousel-caption {
+        font-size: .94em;
+    }
+}
+</style>
+
+<script>
+// Carousel logique pour "Autres ressources"
+(function() {
+    // Chemins/images à adapter avec tes propres ressources/images
+    const ressourceSlides = document.querySelectorAll('#carousel-modal-ressources .carousel-slide');
+    let currentRessourcesIdx = 0;
+
+    function updateRessourcesIndex() {
+        const i = currentRessourcesIdx + 1;
+        const total = ressourceSlides.length;
+        const idxBox = document.getElementById('carousel-index-ressources');
+        if (idxBox) idxBox.textContent = i + ' / ' + total;
+    }
+
+    window.showRessourcesSlide = function(idx) {
+        if (!ressourceSlides.length) return;
+        // Bornes cycliques
+        if (idx < 0) idx = ressourceSlides.length - 1;
+        if (idx >= ressourceSlides.length) idx = 0;
+
+        ressourceSlides.forEach((el, i) => {
+            el.classList.toggle('active', i === idx);
+        });
+        currentRessourcesIdx = idx;
+        updateRessourcesIndex();
+    }
+
+    window.moveCarouselRessources = function(delta) {
+        showRessourcesSlide(currentRessourcesIdx + delta);
+    }
+
+    // Ouvre le modal carousel Autres ressources
+    window.openCarouselRessources = function() {
+        const modal = document.getElementById('carousel-modal-ressources');
+        if (!modal) return;
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+        showRessourcesSlide(0);
+    }
+
+    window.closeCarouselRessources = function() {
+        const modal = document.getElementById('carousel-modal-ressources');
+        if (modal) modal.style.display = "none";
+        document.body.style.overflow = "";
+    }
+
+    window.closeCarouselOnBgRessources = function(e) {
+        if (e.target === document.getElementById('carousel-modal-ressources')) {
+            closeCarouselRessources();
+        }
+    }
+
+    // Active la navigation au clavier dans le modal ressources
+    document.addEventListener('keydown', function(event) {
+        const modal = document.getElementById('carousel-modal-ressources');
+        if (modal && modal.style.display === "flex") {
+            if (event.key === "ArrowLeft") {
+                window.moveCarouselRessources(-1);
+            } else if (event.key === "ArrowRight") {
+                window.moveCarouselRessources(1);
+            } else if (event.key === "Escape") {
+                window.closeCarouselRessources();
+            }
+        }
+    });
+
+    // Initialisation (éviter index -1 après ouverture/refresh)
+    if (ressourceSlides.length) {
+        showRessourcesSlide(0);
+    }
+
+    // Optionnel: liaison à l'ouverture depuis une carte ressource
+    document.addEventListener('DOMContentLoaded', function() {
+        // click sur une .ressource-card => ouvre le carousel ressources
+        document.querySelectorAll('.ressource-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // stop propagation SI jamais imbriqué dans d'autres listeners
+                e.stopPropagation();
+                window.openCarouselRessources();
+            });
+        });
+    });
+})();
+</script>
 
 <!-- Modal Carousel Cybersécurité -->
 <div id="carousel-modal-cyber" class="carousel-modal" onclick="closeCarouselOnBgCyber(event)">
