@@ -1029,8 +1029,23 @@ function openCertificationImage() {
     }
 
     const img = modal.querySelector('#modal-image');
-    img.src = 'Certification RGPD.png';
+    const availableSrcs = [
+        'Certification RGPD.png',
+        'certification-rgpd.png',
+        'captures/Certification RGPD.png',
+        'captures/certification-rgpd.png'
+    ];
+    let set = false;
+    img.onerror = function() {
+        const next = availableSrcs.shift();
+        if (next) {
+            this.src = next;
+            return;
+        }
+        this.alt = 'Image de certification introuvable';
+    };
     img.alt = 'Certification Cybersécurité';
+    img.src = availableSrcs.shift();
     modal.style.display = 'flex';
 }
 </script>
