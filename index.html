@@ -355,6 +355,17 @@
                     </div>
                 </div>
             </div>
+            <div class="project-card" onclick="openCarouselCyber()">
+                <img src="Certification RGPD.png" alt="Certification Cybersécurité" class="project-image" style="background:#fff; padding: 1rem;">
+                <div class="project-info">
+                    <h3>Certification Cybersécurité</h3>
+                    <p>Carrousel de captures d'écran de votre parcours de certification cybersécurité (niveau ANSSI/CNIL).</p>
+                    <div class="tech-stack">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Shield.svg" alt="Cybersécu" class="tech-logo" style="width:40px;height:40px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Certificate_%28check_mark%29.svg" alt="Certificat" class="tech-logo" style="width:40px;height:40px;">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <style>
@@ -444,6 +455,10 @@
         // Sélectionner toutes les cartes
         const cards = document.querySelectorAll('.ressource-card');
         cards.forEach(card => {
+            if (card.classList.contains('carousel-trigger')) {
+                card.style.cursor = 'pointer';
+                return; // On gère ce clic avec un carousel dédié
+            }
             card.style.cursor = 'pointer'; // Optionnel: effet visuel pour le clic
             card.addEventListener('click', function() {
                 const img = card.querySelector('.ressource-image');
@@ -820,70 +835,11 @@
     <section id="autres-ressources" class="autres-ressources">
         <h2 class="section-title">Autres ressources</h2>
         <div class="ressources-grid">
-            <div class="ressource-card">
+            <div class="ressource-card carousel-trigger" onclick="openCarouselCyber()">
                 <img src="Certification RGPD.png" alt="Certification Cybersécurité" class="ressource-image">
                 <div class="ressource-info">
                     <h3>Certification Cybersécurité</h3>
-                    <div class="carousel-container" style="margin: 0; padding: 0;">
-                        <div class="carousel-images">
-                            <button class="carousel-arrow" style="background:none;border:none;font-size:1.7em;" onclick="event.stopPropagation(); showPrevCyberImage(event)">&#8592;</button>
-                            <img
-                              id="cyber-carousel-img"
-                              src="captures/certification-cybersecurite-1.png"
-                              alt="Certification Cybersécurité - Capture 1"
-                              class="ressource-image"
-                              style="margin:0 10px;"
-                            >
-                            <button class="carousel-arrow" style="background:none;border:none;font-size:1.7em;" onclick="event.stopPropagation(); showNextCyberImage(event)">&#8594;</button>
-                        </div>
-                        <div class="carousel-index" id="cyber-carousel-index" style="font-size:.99em;color:#444;">1 / 3</div>
-                    </div>
-                    <p>Attestation de compétences en cybersécurité obtenue lors de programmes spécialisés. Parcourez les captures avec les flèches.</p>
-                    <script>
-                    // ⚡ Carousel for Certification Cybersécurité
-                    (function(){
-                        // On peut utiliser window pour partager
-                        window.cyberCarouselImages = [
-                            {
-                                src: 'captures/certification-cybersecurite-1.png',
-                                alt: 'Certification Cybersécurité - Capture 1'
-                            },
-                            {
-                                src: 'captures/certification-cybersecurite-2.png',
-                                alt: 'Certification Cybersécurité - Capture 2'
-                            },
-                            {
-                                src: 'captures/certification-cybersecurite-3.png',
-                                alt: 'Certification Cybersécurité - Capture 3'
-                            }
-                        ];
-                        window.cyberCarouselIndex = 0;
-
-                        window.showCyberImage = function(nextIndex, evt) {
-                            const arr = window.cyberCarouselImages;
-                            if (!arr || arr.length === 0) return;
-                            window.cyberCarouselIndex = ((nextIndex % arr.length) + arr.length) % arr.length;
-
-                            const imgEl = document.getElementById('cyber-carousel-img');
-                            const idxEl = document.getElementById('cyber-carousel-index');
-                            if(imgEl && arr[window.cyberCarouselIndex]) {
-                                imgEl.src = arr[window.cyberCarouselIndex].src;
-                                imgEl.alt = arr[window.cyberCarouselIndex].alt;
-                            }
-                            if(idxEl) {
-                                idxEl.textContent = (window.cyberCarouselIndex+1) + ' / ' + arr.length;
-                            }
-                        };
-                        window.showNextCyberImage = function(evt){
-                            if(evt) evt.stopPropagation();
-                            window.showCyberImage(window.cyberCarouselIndex+1, evt);
-                        }
-                        window.showPrevCyberImage = function(evt){
-                            if(evt) evt.stopPropagation();
-                            window.showCyberImage(window.cyberCarouselIndex-1, evt);
-                        }
-                    })();
-                    </script>
+                    <p>Attestation de compétences en cybersécurité obtenue lors de programmes spécialisés. Capture d'écran disponible pour vérification.</p>
                 </div>
             </div>
             <div class="ressource-card">
