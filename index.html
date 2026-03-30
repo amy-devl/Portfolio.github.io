@@ -824,7 +824,66 @@
                 <img src="Certification RGPD.png" alt="Certification Cybersécurité" class="ressource-image">
                 <div class="ressource-info">
                     <h3>Certification Cybersécurité</h3>
-                    <p>Attestation de compétences en cybersécurité obtenue lors de programmes spécialisés. Capture d'écran disponible pour vérification.</p>
+                    <div class="carousel-container" style="margin: 0; padding: 0;">
+                        <div class="carousel-images">
+                            <button class="carousel-arrow" style="background:none;border:none;font-size:1.7em;" onclick="event.stopPropagation(); showPrevCyberImage(event)">&#8592;</button>
+                            <img
+                              id="cyber-carousel-img"
+                              src="captures/certification-cybersecurite-1.png"
+                              alt="Certification Cybersécurité - Capture 1"
+                              class="ressource-image"
+                              style="margin:0 10px;"
+                            >
+                            <button class="carousel-arrow" style="background:none;border:none;font-size:1.7em;" onclick="event.stopPropagation(); showNextCyberImage(event)">&#8594;</button>
+                        </div>
+                        <div class="carousel-index" id="cyber-carousel-index" style="font-size:.99em;color:#444;">1 / 3</div>
+                    </div>
+                    <p>Attestation de compétences en cybersécurité obtenue lors de programmes spécialisés. Parcourez les captures avec les flèches.</p>
+                    <script>
+                    // ⚡ Carousel for Certification Cybersécurité
+                    (function(){
+                        // On peut utiliser window pour partager
+                        window.cyberCarouselImages = [
+                            {
+                                src: 'captures/certification-cybersecurite-1.png',
+                                alt: 'Certification Cybersécurité - Capture 1'
+                            },
+                            {
+                                src: 'captures/certification-cybersecurite-2.png',
+                                alt: 'Certification Cybersécurité - Capture 2'
+                            },
+                            {
+                                src: 'captures/certification-cybersecurite-3.png',
+                                alt: 'Certification Cybersécurité - Capture 3'
+                            }
+                        ];
+                        window.cyberCarouselIndex = 0;
+
+                        window.showCyberImage = function(nextIndex, evt) {
+                            const arr = window.cyberCarouselImages;
+                            if (!arr || arr.length === 0) return;
+                            window.cyberCarouselIndex = ((nextIndex % arr.length) + arr.length) % arr.length;
+
+                            const imgEl = document.getElementById('cyber-carousel-img');
+                            const idxEl = document.getElementById('cyber-carousel-index');
+                            if(imgEl && arr[window.cyberCarouselIndex]) {
+                                imgEl.src = arr[window.cyberCarouselIndex].src;
+                                imgEl.alt = arr[window.cyberCarouselIndex].alt;
+                            }
+                            if(idxEl) {
+                                idxEl.textContent = (window.cyberCarouselIndex+1) + ' / ' + arr.length;
+                            }
+                        };
+                        window.showNextCyberImage = function(evt){
+                            if(evt) evt.stopPropagation();
+                            window.showCyberImage(window.cyberCarouselIndex+1, evt);
+                        }
+                        window.showPrevCyberImage = function(evt){
+                            if(evt) evt.stopPropagation();
+                            window.showCyberImage(window.cyberCarouselIndex-1, evt);
+                        }
+                    })();
+                    </script>
                 </div>
             </div>
             <div class="ressource-card">
