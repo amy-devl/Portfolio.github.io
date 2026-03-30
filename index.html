@@ -129,6 +129,26 @@
                 </div>
             </div>
         </div>
+
+                <script>
+                // Fallback pour images manquantes dans le carrousel cybersécurité
+                document.addEventListener('DOMContentLoaded', function() {
+                    const imgs = document.querySelectorAll('#carousel-track-cyber img.carousel-img');
+                    imgs.forEach(img => {
+                        img.addEventListener('error', function() {
+                            // Remplace par une image de secours présente dans le projet
+                            this.src = 'Certification RGPD.png';
+                            this.alt = 'Image indisponible - affichage de secours';
+                            // optionnel : ajuster le style pour que l'image de secours s'affiche correctement
+                            this.style.objectFit = 'contain';
+                        });
+                        // si l'image est déjà chargée mais a un src vide, force le fallback
+                        if (!img.src || img.src.endsWith('/')) {
+                            img.src = 'Certification RGPD.png';
+                        }
+                    });
+                });
+                </script>
     </section>
     <section id="veille" class="cv-section">
         <h2 class="section-title">Veille informationnelle</h2>
