@@ -663,7 +663,22 @@
             }
         ];
 
-        const modal = document.getElementById('image-modal');
+        let modal = document.getElementById('image-modal');
+        // Garantit qu'une modale unique existe avant d'y accéder
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'image-modal';
+            modal.style.display = 'none';
+            modal.innerHTML = `
+                <div class="modal-backdrop"></div>
+                <div class="modal-content"></div>
+            `;
+            document.body.appendChild(modal);
+            // Fermeture au clic sur le backdrop
+            modal.querySelector('.modal-backdrop').addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+        }
         // Sélectionne toutes les cartes de ressource
         const ressourceCards = document.querySelectorAll('.ressource-card');
         ressourceCards.forEach(function(card){
