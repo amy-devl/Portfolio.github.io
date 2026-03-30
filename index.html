@@ -130,25 +130,7 @@
             </div>
         </div>
 
-                <script>
-                // Fallback pour images manquantes dans le carrousel cybersécurité
-                document.addEventListener('DOMContentLoaded', function() {
-                    const imgs = document.querySelectorAll('#carousel-track-cyber img.carousel-img');
-                    imgs.forEach(img => {
-                        img.addEventListener('error', function() {
-                            // Remplace par une image de secours présente dans le projet
-                            this.src = 'Certification RGPD.png';
-                            this.alt = 'Image indisponible - affichage de secours';
-                            // optionnel : ajuster le style pour que l'image de secours s'affiche correctement
-                            this.style.objectFit = 'contain';
-                        });
-                        // si l'image est déjà chargée mais a un src vide, force le fallback
-                        if (!img.src || img.src.endsWith('/')) {
-                            img.src = 'Certification RGPD.png';
-                        }
-                    });
-                });
-                </script>
+                
     </section>
     <section id="veille" class="cv-section">
         <h2 class="section-title">Veille informationnelle</h2>
@@ -962,6 +944,24 @@
             document.body.style.overflow = 'hidden';
             console.warn('Aucune slide trouvée pour le carrousel cybersécurité');
             return;
+        }
+
+        // Si on a un mapping clair des images, on l'applique aux slides pour garantir des sources distinctes
+        try {
+            const mapping = window.cyberCarouselImages || [];
+            slides.forEach((slide, i) => {
+                const img = slide.querySelector('img');
+                if (!img) return;
+                // si mapping disponible, force la source correspondante
+                if (mapping[i] && mapping[i].src) {
+                    if (img.src !== mapping[i].src) img.src = mapping[i].src;
+                    if (mapping[i].alt) img.alt = mapping[i].alt;
+                }
+                // enlève listeners précédents d'erreur (sécurité)
+                img.onerror = null;
+            });
+        } catch (e) {
+            console.warn('Erreur lors de lassignation des images du carrousel :', e);
         }
 
         // Affiche la première slide
