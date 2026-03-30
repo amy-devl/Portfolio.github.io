@@ -355,17 +355,6 @@
                     </div>
                 </div>
             </div>
-            <div class="project-card" onclick="openCarouselCyber()">
-                <img src="Certification RGPD.png" alt="Certification Cybersécurité" class="project-image" style="background:#fff; padding: 1rem;">
-                <div class="project-info">
-                    <h3>Certification Cybersécurité</h3>
-                    <p>Carrousel de captures d'écran de votre parcours de certification cybersécurité (niveau ANSSI/CNIL).</p>
-                    <div class="tech-stack">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Shield.svg" alt="Cybersécu" class="tech-logo" style="width:40px;height:40px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Certificate_%28check_mark%29.svg" alt="Certificat" class="tech-logo" style="width:40px;height:40px;">
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
     <style>
@@ -455,10 +444,6 @@
         // Sélectionner toutes les cartes
         const cards = document.querySelectorAll('.ressource-card');
         cards.forEach(card => {
-            if (card.classList.contains('carousel-trigger')) {
-                card.style.cursor = 'pointer';
-                return; // On gère ce clic avec un carousel dédié
-            }
             card.style.cursor = 'pointer'; // Optionnel: effet visuel pour le clic
             card.addEventListener('click', function() {
                 const img = card.querySelector('.ressource-image');
@@ -835,7 +820,7 @@
     <section id="autres-ressources" class="autres-ressources">
         <h2 class="section-title">Autres ressources</h2>
         <div class="ressources-grid">
-            <div class="ressource-card carousel-trigger" onclick="openCarouselCyber()">
+            <div class="ressource-card">
                 <img src="Certification RGPD.png" alt="Certification Cybersécurité" class="ressource-image">
                 <div class="ressource-info">
                     <h3>Certification Cybersécurité</h3>
