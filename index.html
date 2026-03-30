@@ -439,11 +439,15 @@
         }
     </style>
     <script>
-    // Fonctionnalité : au clic sur une carte, affiche l'image en grand (popup)
+    // Fonctionnalité : au clic sur une carte, affiche l'image en grand (popup) sauf cartes carrousel dédiées
     document.addEventListener('DOMContentLoaded', function() {
         // Sélectionner toutes les cartes
         const cards = document.querySelectorAll('.ressource-card');
         cards.forEach(card => {
+            if (card.classList.contains('carousel-cyber-card')) {
+                card.style.cursor = 'pointer';
+                return; // géré par openCarouselCyber()
+            }
             card.style.cursor = 'pointer'; // Optionnel: effet visuel pour le clic
             card.addEventListener('click', function() {
                 const img = card.querySelector('.ressource-image');
@@ -659,6 +663,9 @@
         // Sélectionne toutes les cartes de ressource
         const ressourceCards = document.querySelectorAll('.ressource-card');
         ressourceCards.forEach(function(card){
+            if (card.classList.contains('carousel-cyber-card')) {
+                return; // géré par openCarouselCyber()
+            }
             const imgInCard = card.querySelector('img');
 
             // Carrousel Cybersécurité
@@ -820,7 +827,7 @@
     <section id="autres-ressources" class="autres-ressources">
         <h2 class="section-title">Autres ressources</h2>
         <div class="ressources-grid">
-            <div class="ressource-card">
+            <div class="ressource-card carousel-cyber-card" onclick="openCarouselCyber()">
                 <img src="Certification RGPD.png" alt="Certification Cybersécurité" class="ressource-image">
                 <div class="ressource-info">
                     <h3>Certification Cybersécurité</h3>
