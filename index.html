@@ -1037,7 +1037,7 @@ function openCertificationImage() {
 
 
 <!-- Modal Carousel Cybersécurité -->
-<div class="carousel-track" id="carousel-track-cyber">
+<div class="carousel-track" id="carousel-track-cyber" onclick="closeCarousel">
     <div class="carousel-slide active">
         <img src="certification-rgpd.png" alt="Attestation RGPD - CNIL" class="carousel-img" />
         <p class="carousel-caption">Attestation de suivi RGPD — CNIL, score 100% (décembre 2024)</p>
@@ -1072,9 +1072,8 @@ function openCertificationImage() {
     </div>
 </div>
 
-            <button class="carousel-arrow carousel-arrow--right" onclick="moveCarouselCyber(1)">&#8594;</button>
-        </div>
-
+        <button class="carousel-arrow carousel-arrow--right" onclick="moveCarouselCyber(1)">&#8594;</button>
+    </div>
         <div class="carousel-dots" id="carousel-dots-cyber"></div>
     </div>
 </div>
