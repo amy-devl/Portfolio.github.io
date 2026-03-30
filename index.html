@@ -649,51 +649,26 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Carousel image sources and alts for Certif Cybersécurité
         const cyberCarouselImages = [
-            {
-                src: 'captures/certification-cybersecurite-1.png',
-                alt: 'Certification Cybersécurité - Capture 1'
-            },
-            {
-                src: 'captures/certification-cybersecurite-2.png',
-                alt: 'Certification Cybersécurité - Capture 2'
-            },
-            {
-                src: 'captures/certification-cybersecurite-3.png',
-                alt: 'Certification Cybersécurité - Capture 3'
-            }
-            // Ajoute d'autres captures ici si besoin
+            { src: 'certification-rgpd.png', alt: 'Certification Cybersécurité - Attestation RGPD' },
+            { src: 'signature-elec-2.png', alt: 'Signature électronique' },
+            { src: 'projet-senscyber-1.png', alt: 'Projet SensCyber 1' },
+            { src: 'projet-senscyber-2.png', alt: 'Projet SensCyber 2' },
+            { src: 'projet-senscyber-3.png', alt: 'Projet SensCyber 3' },
+            { src: 'capture-142317.png', alt: 'SecNumacadémie - 142317' },
+            { src: 'capture-143205.png', alt: 'SecNumacadémie - 143205' },
+            { src: 'capture-143458.png', alt: 'SecNumacadémie - 143458' }
         ];
 
-        // Carousel image sources and alts for Certification RGPD
+        // Carousel image sources and alts for Certification RGPD (same images available locally)
         const rgpdCarouselImages = [
-            {
-                src: 'captures/Capture d\'écran 2025-05-23 143205.png',
-                alt: "Certification RGPD - Capture 1"
-            },
-            {
-                src: 'captures/Capture d\'écran 2025-05-23 143458.png',
-                alt: "Certification RGPD - Capture 2"
-            },
-            {
-                src: 'captures/Projet SensCyber 1.png',
-                alt: "Certification RGPD - Projet SensCyber 1"
-            },
-            {
-                src: 'captures/Projet SensCyber 2 .png',
-                alt: "Certification RGPD - Projet SensCyber 2"
-            },
-            {
-                src: 'captures/Projet SensCyber 3 .png',
-                alt: "Certification RGPD - Projet SensCyber 3"
-            },
-            {
-                src: 'captures/Signature elec 2.png',
-                alt: "Certification RGPD - Signature électronique"
-            },
-            {
-                src: 'captures/Capture d\'écran 2025-05-23 142317.png',
-                alt: "Certification RGPD - Capture 3"
-            }
+            { src: 'certification-rgpd.png', alt: 'Certification RGPD - Attestation' },
+            { src: 'signature-elec-2.png', alt: 'Signature électronique' },
+            { src: 'projet-senscyber-1.png', alt: 'Projet SensCyber 1' },
+            { src: 'projet-senscyber-2.png', alt: 'Projet SensCyber 2' },
+            { src: 'projet-senscyber-3.png', alt: 'Projet SensCyber 3' },
+            { src: 'capture-142317.png', alt: 'Capture 142317' },
+            { src: 'capture-143205.png', alt: 'Capture 143205' },
+            { src: 'capture-143458.png', alt: 'Capture 143458' }
         ];
 
         let modal = document.getElementById('image-modal');
@@ -829,22 +804,17 @@
     // Ajout de 6 templates pour le carrousel Certification RGPD
     // Pour chaque template, modifiez / remplacez les valeurs 'src' et 'alt' selon vos besoins
 
-    // Vérifiez que le tableau existe ou définissez-le
-    window.cyberCarouselImages = window.cyberCarouselImages || [];
-
-    // Remplace les templates placeholder par les captures réelles pour le carrousel cybersécurité
-    cyberCarouselImages.push(
-        { src: 'captures/certification-cybersecurite-1.png', alt: 'Certification Cybersécurité - Capture 1' },
-        { src: 'captures/certification-cybersecurite-2.png', alt: 'Certification Cybersécurité - Capture 2' },
-        { src: 'captures/certification-cybersecurite-3.png', alt: 'Certification Cybersécurité - Capture 3' },
-        { src: 'captures/Capture d\'écran 2025-05-23 142317.png', alt: 'Certification Cybersécurité - Capture 2025-05-23 142317' },
-        { src: 'captures/Capture d\'écran 2025-05-23 143205.png', alt: 'Certification Cybersécurité - Capture 2025-05-23 143205' },
-        { src: 'captures/Capture d\'écran 2025-05-23 143458.png', alt: 'Certification Cybersécurité - Capture 2025-05-23 143458' },
-        { src: 'captures/Projet SensCyber 1.png', alt: 'Projet SensCyber 1' },
-        { src: 'captures/Projet SensCyber 2 .png', alt: 'Projet SensCyber 2' },
-        { src: 'captures/Projet SensCyber 3 .png', alt: 'Projet SensCyber 3' },
-        { src: 'captures/Signature elec 2.png', alt: 'Signature électronique' }
-    );
+    // Définir explicitement les images à utiliser pour le carrousel cybersécurité
+    window.cyberCarouselImages = [
+        { src: 'certification-rgpd.png', alt: 'Certification Cybersécurité - Attestation RGPD' },
+        { src: 'signature-elec-2.png', alt: 'Signature électronique' },
+        { src: 'projet-senscyber-1.png', alt: 'Projet SensCyber 1' },
+        { src: 'projet-senscyber-2.png', alt: 'Projet SensCyber 2' },
+        { src: 'projet-senscyber-3.png', alt: 'Projet SensCyber 3' },
+        { src: 'capture-142317.png', alt: 'SecNumacadémie - 142317' },
+        { src: 'capture-143205.png', alt: 'SecNumacadémie - 143205' },
+        { src: 'capture-143458.png', alt: 'SecNumacadémie - 143458' }
+    ];
     // Vous pouvez maintenant remplacer les .png et ajouts dans le carrousel si besoin depuis l'interface !
     </script>
 
